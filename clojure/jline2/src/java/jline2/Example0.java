@@ -1,4 +1,4 @@
-package jline2.Example0;
+package jline2;
 
 import java.io.IOException;
 
