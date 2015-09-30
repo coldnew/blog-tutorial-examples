@@ -7,10 +7,4 @@
                  [jline/jline "2.13"]]
 
   :source-paths ["src/clj"]
-  :java-source-paths ["src/java"]
-
-  :prep-tasks ["javac" "compile"]
-
-  ;;:aot :all
-  ;;:main jline2.core)
-)
+  :java-source-paths ["src/java"])
