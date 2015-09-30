@@ -6,5 +6,10 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [jline/jline "2.13"]]
 
+  :source-paths ["src/clj"]
+  :java-source-paths ["src/java"]
+
+  :prep-tasks ["javac" "compile"]
+
   :aot :all
   :main jline2.core)
