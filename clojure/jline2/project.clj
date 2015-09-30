@@ -11,5 +11,6 @@
 
   :prep-tasks ["javac" "compile"]
 
-  :aot :all
-  :main jline2.core)
+  ;;:aot :all
+  ;;:main jline2.core)
+)

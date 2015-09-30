@@ -20,7 +20,7 @@
   (try
     (let [console (ConsoleReader.)]
       (loop []
-        (when-let [line (.readLine console "user> ")]
+        (when-let [line (.readLine console "clojure> ")]
           (when-not (= line "quit")
             (println (str "You enter: " line))
             (recur)))))
