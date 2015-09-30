@@ -9,7 +9,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 
-public class CsvRead {
+public class CSVRead {
 
     public static void main(String[] args) {
         try {
