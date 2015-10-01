@@ -6,10 +6,8 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.122"]]
 
-
   :cljsbuild {:builds
-              [{
-                :source-paths ["src"]
+              [{:source-paths ["src"]
                 :compiler {:output-to "target/readline.js"
                            :output-dir "target"
                            :source-map "target/readline.js.map"
