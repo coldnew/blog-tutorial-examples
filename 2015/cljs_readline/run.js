@@ -4,6 +4,6 @@ try {
 } catch(err) {
 }
 require("./target/goog/bootstrap/nodejs.js");
-require("./target/cljs_readline.js");
-require("./target/cljs_readline/core");
-cljs_readline.core._main(process.argv[2]); // passing argument
+require("./target/readline.js");
+require("./target/readline/core");
+readline.core._main();
