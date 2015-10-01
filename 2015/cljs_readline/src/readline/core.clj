@@ -1,4 +1,4 @@
-(ns cljs-readline.core)
+(ns readline.core)
 
 (defn foo
   "I don't do a whole lot."

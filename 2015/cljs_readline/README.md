@@ -1,4 +1,4 @@
-# cljs_readline
+# readline
 
 A Clojure library designed to ... well, that part is up to you.
 

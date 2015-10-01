@@ -1,6 +1,6 @@
-(ns cljs-readline.core-test
+(ns readline.core-test
   (:require [clojure.test :refer :all]
-            [cljs-readline.core :refer :all]))
+            [readline.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
