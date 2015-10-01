@@ -5,4 +5,4 @@
 (defn -main []
   (let [console (ConsoleReader.)
         line (.readLine console "user> ")]
-    (println (str "You enter: ") line)))
+    (println (str "You enter: " line))))
