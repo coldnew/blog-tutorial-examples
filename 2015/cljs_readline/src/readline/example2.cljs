@@ -5,7 +5,6 @@
 ;; enable *print-fn* in clojurescript
 (enable-console-print!)
 
-;; FIXME: can't use 'quit' to exit
 (defn -main [& args]
   (let [readline (nodejs/require "readline")
         rl (.createInterface readline
@@ -27,7 +26,7 @@
            (fn [line]
              (let [line* (str/reverse line)]
                (case line*
-                 "quit" (.close rl)
+                 "quit" (.exit js/process) ; real quit application
                  ;; default
                  (println (str "You enter: " line*)))
                (if-not (= line* "quit") (.prompt rl))
