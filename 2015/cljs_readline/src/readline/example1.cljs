@@ -19,6 +19,8 @@
                (do
                  (println (str "You enter: " line))
                  (.prompt rl)))))
+      (.on "close" (fn[]
+                     (println "Exit application.")))
       (.prompt)
       )))
 
