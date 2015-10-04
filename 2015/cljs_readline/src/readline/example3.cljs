@@ -6,7 +6,8 @@
 (enable-console-print!)
 
 (defn -main [& args]
-  (let [readline (nodejs/require "readline")
+  (let [fs (nodejs/require "fs")
+        readline (nodejs/require "readline")
         rl (.createInterface readline
                              (clj->js {:input  (.-stdin  js/process)
                                        :output (.-stdout js/process)}))]
@@ -17,7 +18,10 @@
              (let [line-seq (str/split line #"\s+")]
                (case (first line-seq)
                  "quit" (.close rl)
-                 "ls" (println "FIXME:")
+                 "ls" (.readdir fs (.cwd js/process)
+                                (fn [err items]
+                                  (doseq [f items]
+                                    (println (str f)))))
                  "clear" (println "\033[2J]\033[H")
                  "echo"  (println (str (second line-seq)))
                  ;; default
