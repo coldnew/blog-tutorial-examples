@@ -24,9 +24,11 @@
                                     (println (str f)))
                                   (.prompt rl)))
                  "clear" (do (println "\033[2J]\033[H") (.prompt rl))
-                 "echo"  (do (println (str (second line-seq)) (.prompt rl)))
+                 "echo"  (do (println (str (second line-seq))) (.prompt rl))
                  ;; default
-                 (println (str "No such command!! You enter: " line))))))
+                 (do
+                   (println (str "No such command!! You enter: " line))
+                   (.prompt rl))))))
       (.on "close" #(println "Exit application."))
       (.prompt)
       )))
