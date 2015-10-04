@@ -21,12 +21,12 @@
                  "ls" (.readdir fs (.cwd js/process)
                                 (fn [err items]
                                   (doseq [f items]
-                                    (println (str f)))))
-                 "clear" (println "\033[2J]\033[H")
-                 "echo"  (println (str (second line-seq)))
+                                    (println (str f)))
+                                  (.prompt rl)))
+                 "clear" (do (println "\033[2J]\033[H") (.prompt rl))
+                 "echo"  (do (println (str (second line-seq)) (.prompt rl)))
                  ;; default
                  (println (str "No such command!! You enter: " line)))
-               (if-not (= line "quit")(.prompt rl))
                )))
       (.prompt)
       )))
