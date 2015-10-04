@@ -22,11 +22,11 @@
       (.on "line"
            (fn [line]
              (case line
-               "quit" (.exit js/process) ; real quit application
+               "quit" (.close rl)
                ;; default
-               (println (str "You enter: " line)))
-             (if-not (= line "quit") (.prompt rl))
-             ))
+               (do
+                 (println (str "You enter: " line))
+                 (.prompt rl)))))
       (.on "close" #(println "Exit application."))
       (.prompt)
       )))
