@@ -19,27 +19,47 @@
                      (str/split #"\s+"))))
 
 
-(tokenize "(+ 1 2 (- 3 4)) (- 1 2)")
+(first (tokenize "(+ 1 2 (- 3 4)) (- 1 2)"))
 
-(defn parse-list [l]
+(def globals
+  {"+" +, "-" -, "*" *, "/" /, "not" not, ">" >, "<" <, ">=" >=, "<=" <=, "=" =, "equal?" =, "eq?" =,
+   "length" count, "cons" cons, "car" first, "cdr" rest, "append" append, "list" list, "list?" vector?,
+   "null?" nil?, "symbol?" symbol?})
+
+
+(defn to-string [exp]
+  (if (vector? exp)
+    (str "(" (str/join " " (map to-string exp)) ")")
+    (str exp)))
+
+(defn read-from [tokens]
+  (assert (not= 0 (count tokens)))
+  (case (first tokens)
+    "("
+
+    ;; default
+
+    )
   )
 
-(defn parse-atom [tok]
-  (let [repr (read-string tok)]
-    (if (number? repr)
-      repr
-      tok)))
+(assert (not= 0 (count (tokenize "( + 1 2)"))))
 
-(defn parse [tokens]
-  (let [token (first tokens)]
-    (if (= token "(")
-      (parse-list tokens)
-      (parse-atom token))))
-
-(parse (tokenize "1"))
+(comment
+  (println
+   (to-string
+    (eval
+     (read-from (tokenize "(+ 1 2)"))
+     )))
+  )
 
 (defn -main [& args]
-  (println "Hello World"))
+  ;; REPL
+
+  ;; (->> input
+  ;;      read-expr
+  ;;      eval-expr
+  ;;      print-expr)
+  )
 
 ;; setup node.js starter point
 #?(:cljs (set! *main-cli-fn* -main))
