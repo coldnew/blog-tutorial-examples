@@ -22,10 +22,12 @@
 (first (tokenize "(+ 1 2 (- 3 4)) (- 1 2)"))
 
 (def globals
-  {"+" +, "-" -, "*" *, "/" /, "not" not, ">" >, "<" <, ">=" >=, "<=" <=, "=" =, "equal?" =, "eq?" =,
-   "length" count, "cons" cons, "car" first, "cdr" rest, "append" append, "list" list, "list?" vector?,
-   "null?" nil?, "symbol?" symbol?})
+  (ref {"+" +, "-" -, "*" *, "/" /, "not" not, ">" >, "<" <, ">=" >=, "<=" <=, "=" =, "equal?" =, "eq?" =,
+   "length" count, "cons" cons, "car" first, "cdr" rest, "list" list, "list?" vector?,
+   "null?" nil?, "symbol?" symbol?}))
 
+(globals "x" )
+( "x" globals)
 
 (defn to-string [exp]
   (if (vector? exp)
