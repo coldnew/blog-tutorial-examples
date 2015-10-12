@@ -10,7 +10,6 @@
 (defn strip-comments [s]
   (str/join "" (str/split s #";.*\n?")))
 
-
 (defn tokenize [exp]
   (remove empty? (-> (strip-comments exp)
                      (str/replace "(" " ( ")
@@ -22,17 +21,30 @@
 (first (tokenize "(+ 1 2 (- 3 4)) (- 1 2)"))
 
 (def globals
-  (ref {"+" +, "-" -, "*" *, "/" /, "not" not, ">" >, "<" <, ">=" >=, "<=" <=, "=" =, "equal?" =, "eq?" =,
-   "length" count, "cons" cons, "car" first, "cdr" rest, "list" list, "list?" vector?,
-   "null?" nil?, "symbol?" symbol?}))
+  {"+" +, "-" -, "*" *, "/" /, "not" not, ">" >, "<" <, ">=" >=, "<=" <=, "=" =, "equal?" =, "eq?" =,
+   "length" count, "cons" cons, "car" first, "cdr" rest, "list" list, "list?" vector?, "begin" do, "#t" true, "#nil" nil,
+   "null?" nil?, "symbol?" symbol?})
 
 (globals "x" )
 ( "x" globals)
 
+;; TODO: remove
 (defn to-string [exp]
-  (if (vector? exp)
+  (if (seq? exp)
     (str "(" (str/join " " (map to-string exp)) ")")
     (str exp)))
+
+(defn expr->string [expr]
+  (if (seq? expr)
+    (str "(" (str/join " " expr) ")")
+    (str expr)))
+
+(expr->string "asd")
+(expr->string '("asd"))
+(expr->string '["asd" a b])
+(expr->string 'b)
+
+
 
 (defn read-from [tokens]
   (assert (not= 0 (count tokens)))
@@ -48,7 +60,7 @@
 
 (comment
   (println
-   (to-string
+   (expr->string
     (eval
      (read-from (tokenize "(+ 1 2)"))
      )))
