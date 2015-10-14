@@ -7,15 +7,94 @@
 ;; enable *print-fn* in clojurescript
 ;; #?(:cljs (enable-console-print!))
 
-(defn strip-comments [s]
+;;;; Helper Functions
+
+(defn error [message]
+  (throw (IllegalArgumentException. message)))
+
+;;;; Read
+
+(defn strip-comments
+  "Remove comments in string."
+  [s]
   (str/join "" (str/split s #";.*\n?")))
 
-(defn tokenize [exp]
+(defn tokenize
+  "Convert a string of characters into a list of tokens."
+  [exp]
   (remove empty? (-> (strip-comments exp)
                      (str/replace "(" " ( ")
                      (str/replace ")" " ) ")
                      (str/replace "'" " ' ")
                      (str/split #"\s+"))))
+
+(defn atomic
+  "Numbers become numbers; every other token is a symbol."
+  [tok]
+  (let [repr (read-string tok)]
+    (if (number? repr)
+      repr
+      ;; no strings
+      tok)))
+
+(defn atomic
+  "Numbers become numbers; every other token is a symbol."
+  [tok]
+  (let [repr (read-string tok)]
+    (if (number? repr)
+      repr
+      ;; no strings
+      tok)))
+
+(map atomic (tokenize "(+ 1 2 ( - 3 4))"))
+
+(map read-string ["1" "2" "3" "4"])
+
+(number? (atomic "1"))
+
+(defn parse
+  "Read a lisp expression from string."
+  [token]
+  ;; token should not contains null string
+  (assert (not (empty? token)))
+  ;; parse the token to atom
+  (case token
+    ;;    ("(" ")")  (symbol token)
+    "(" (symbol "[")
+    ")" (symbol "]")
+    ;; else
+    (atomic token)))
+
+(defn read [sexp]
+  (map parse (tokenize sexp)))
+
+(nth (vec   (read "(+ 1 2 (- 3 4))")) 1)
+
+(parse (tokenize "(+ 1 2)"))
+
+(doseq [s (tokenize "(+ 1 2)")]
+  (parse s)
+  )
+
+(parse (tokenize "( + 1 2) \n (+ 1 2)"))
+(parse (tokenize "( + 1 2 (- 3 4))"))
+
+(map atomic (tokenize "+ 1 2 (+ 1 2)"))
+
+(map #(atomic %) '("("))
+
+;; (+ 1 2) => [["+" 1  2]]
+;; (+ 1 2) => (("+" 1  2))
+;; (+ 1 2 (- 3 4)) => [["+" 1 2 ["-" 3 4]]]
+;; (+ 1 2 (- 3 4)) => (("+" 1 2 ("-" 3 4)))
+;; (begin (+ 1 2))  => ['begin' , ['+' '1' '2'] ]
+;; (begin (+ 1 2))  => ('begin' , ('+' '1' '2') )
+
+;;;; Eval
+
+;;;; Print
+
+;;;; Loop
 
 
 (first (tokenize "(+ 1 2 (- 3 4)) (- 1 2)"))
