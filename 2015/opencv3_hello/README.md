@@ -1,4 +1,4 @@
-# opencv3_hello
+# myapp
 
 A Clojure library designed to ... well, that part is up to you.
 

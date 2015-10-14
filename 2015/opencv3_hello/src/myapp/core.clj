@@ -1,4 +1,4 @@
-(ns opencv3-hello.core)
+(ns myapp.core)
 
 (defn foo
   "I don't do a whole lot."

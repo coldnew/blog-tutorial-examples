@@ -1,6 +1,6 @@
-(ns opencv3-hello.core-test
+(ns myapp.core-test
   (:require [clojure.test :refer :all]
-            [opencv3-hello.core :refer :all]))
+            [myapp.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
