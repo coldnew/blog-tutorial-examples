@@ -1,6 +1,8 @@
-(ns renjin-clj.core)
+(ns renjin-clj.core
+  (:import [javax.script ScriptEngine ScriptEngineManager ScriptException])
+  )
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(def renjin (.getEngineByName (ScriptEngineManager.) "Renjin"))
+
+(.eval renjin "df <- data.frame(x=1:10, y=(1:10) + rnorm(n=10))")
+(.eval renjin "print(df)")
