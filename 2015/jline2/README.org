@@ -1,0 +1,18 @@
+
+* Clojure Jline2 example
+
+An example to use Clojure with jLine2.
+
+For Chinese user, you can see my blog tutorial:
+
+[[http://coldnew.github.io/blog/2015/10-01_clojure_jline/][在 clojure 下使用 JLine 2.x 實現互動式命令]]
+
+** Usage
+
+Please see my blog tutorial.
+
+** License
+
+Copyright © 2015 Yen-Chin, Lee
+
+Distributed under the Eclipse Public License either version 1.0 or any later version.

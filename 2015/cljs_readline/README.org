@@ -1,0 +1,19 @@
+
+* Clojurescript readline example
+
+An example to use clojurescript with readline module on Node.js.
+
+For Chinese user, you can see my blog tutorial:
+
+[[http://coldnew.github.io/blog/2015/10-04_cljs_readline_nodejs/][在 clojurescript 下使用 readline 實現互動式命令 - Node.js 篇]]
+
+** Usage
+
+Please see my blog tutorial.
+
+
+** License
+
+Copyright © 2015 Yen-Chin, Lee
+
+Distributed under the Eclipse Public License either version 1.0 or any later version.

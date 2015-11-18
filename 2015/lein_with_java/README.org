@@ -1,0 +1,18 @@
+
+* Java with lein example
+
+An example to use =lein= as java's building system.
+
+For Chinese user, you can see my blog tutorial:
+
+[[http://coldnew.github.io/blog/2015/09-30_lein_with_java/][使用 Leiningen 作為 Java 自動構建工具]]
+
+** Usage
+
+Please see my blog tutorial.
+
+** License
+
+Copyright © 2015 Yen-Chin, Lee
+
+Distributed under the Eclipse Public License either version 1.0 or any later version.

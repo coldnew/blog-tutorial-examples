@@ -1,0 +1,18 @@
+
+* OpenCV 3 Clojure example
+
+An example to use Clojure with OpenCV3.
+
+For Chinese user, you can see my blog tutorial:
+
+[[http://coldnew.github.io/blog/2015/10-12_clojure_opencv3/][在 clojure 中使用 OpenCV 3.x]]
+
+** Usage
+
+Please see my blog tutorial.
+
+** License
+
+Copyright © 2015 Yen-Chin, Lee
+
+Distributed under the Eclipse Public License either version 1.0 or any later version.
