@@ -21,6 +21,21 @@
                   :conn-timeout (* 10 1000)
                   :body (json/write-str {:text message})})))
 
+(defn listen-gitter-event []
+  (let [{:keys [token room-id]} (:gitter config)]
+    (with-open [conn (http/create-client)]
+      (let [resp (http/stream-seq conn
+                                  :get (str "https://stream.gitter.im/v1/rooms/" room-id "/chatMessages")
+                                  :headers {"Authorization" (str "Bearer " token) "Connection" "keep-alive"}
+                                  :timeout -1)]
+        (doseq [s (http/string resp)]
+          (when-not (clojure.string/blank? s)
+            (let [{:keys [fromUser text]} (json/read-str s :key-fn keyword)
+                  username (:username fromUser)]
+              (println (str username ": " text))
+              )))))))
 
 (defn -main [& args]
-  (println "Hello, Clojure!"))
+  ;; listen gitter event
+  (listen-gitter-event)
+  )
