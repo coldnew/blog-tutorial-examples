@@ -64,8 +64,8 @@
     (reset! conn c)
     ;; tick the irc server to prevent get "Connection reset by peer" error.
     (while true
-      (irc/message conn server "Hi")
-      (Thread/sleep 50000))))
+      (irc/message c server "Hi")
+      (Thread/sleep 5000))))
 
 (defn event-loop []
   ;; gitter -> irc
