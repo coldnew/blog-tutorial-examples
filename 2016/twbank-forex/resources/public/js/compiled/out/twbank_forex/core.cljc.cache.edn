@@ -1,0 +1,2 @@
+;; Analyzed by ClojureScript 1.7.228
+{:name twbank-forex.core, :doc nil, :excludes #{}, :use-macros nil, :require-macros nil, :uses {<! cljs.core.async}, :requires {cljs.core.async cljs.core.async, hickory hickory.core, hickory.core hickory.core, s hickory.select, hickory.select hickory.select, str clojure.string, clojure.string clojure.string}, :imports nil}
