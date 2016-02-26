@@ -19,8 +19,6 @@
        hickory/parse
        hickory/as-hickory))
 
-(def A (html->hickory (fetch-html)))
-
 (defn parse-data [data]
   (->> (s/select (s/child
                   (s/or (s/class "titleLeft")
